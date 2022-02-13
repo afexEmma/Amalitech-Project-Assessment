@@ -33,9 +33,7 @@ const returnRandBase = () => {
         }else{
             this.mutate();
         }
-        // console.log(dna)
         this.dna = dna;
-        // console.log(randBase)
 
       },
 
@@ -69,6 +67,23 @@ const returnRandBase = () => {
         }else{
             return false
         }
+      },
+
+      //Complementary Strand method
+      obj.complementStrand = function(){
+        let newDna = []
+        for(let i in this.dna){
+          if(this.dna[i] === 'A'){
+            newDna.push('T')
+          }else if(this.dna[i] === 'T'){
+            newDna.push('A')
+          }else if(this.dna[i] === 'C'){
+            newDna.push('G')
+          }else if(this.dna[i] === 'G'){
+            newDna.push('C')
+          }
+        }
+        return newDna;
       }
   
       return obj
@@ -83,3 +98,5 @@ const ex2 = pAequorFactory("ex2", ['A', 'C', 'G', 'C'])
 
 ex1.compareDNA(ex2)
 console.log(ex1.willLikelySurvive())
+
+console.log(ex1.complementStrand())
